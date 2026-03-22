@@ -1,15 +1,22 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Support Morris Zoleta</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-body {
+* {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #020617);
     color: white;
     display: flex;
     justify-content: center;
@@ -17,15 +24,27 @@ body {
     height: 100vh;
 }
 
+/* Glow background */
+body::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #22c55e55, transparent);
+    top: -100px;
+    left: -100px;
+    filter: blur(120px);
+}
+
 /* Card */
 .card {
+    width: 350px;
+    padding: 25px;
+    border-radius: 20px;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 30px;
-    width: 320px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
     text-align: center;
-    box-shadow: 0 0 40px rgba(0,255,200,0.2);
     animation: fadeIn 1s ease;
 }
 
@@ -33,49 +52,43 @@ body {
 .avatar {
     width: 80px;
     height: 80px;
+    margin: auto;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00ffcc, #00aaff);
+    background: linear-gradient(45deg, #22c55e, #06b6d4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
     font-weight: bold;
-    margin: auto;
+    font-size: 24px;
 }
 
-/* Text */
+/* Title */
 h1 {
-    margin: 15px 0 5px;
+    margin-top: 15px;
     font-size: 22px;
 }
 
-p {
+.subtitle {
     opacity: 0.7;
     font-size: 14px;
-}
-
-/* Number box */
-.number {
-    background: #020617;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 15px 0;
-    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 /* Buttons */
-button {
-    border: none;
-    padding: 10px;
+.btn {
+    display: block;
     width: 100%;
+    padding: 12px;
+    margin: 8px 0;
     border-radius: 10px;
-    margin-top: 10px;
+    border: none;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.copy {
-    background: #00ff99;
+.btn:hover {
+    transform: scale(1.05);
 }
 
 .paypal {
@@ -83,26 +96,38 @@ button {
     color: white;
 }
 
+.maya {
+    background: #22c55e;
+    color: black;
+}
+
+/* Number box */
+.number-box {
+    background: #020617;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* QR */
 .qr {
-    width: 200px;
+    width: 100%;
     margin-top: 15px;
     border-radius: 10px;
-    transition: 0.3s;
 }
 
-.qr:hover {
-    transform: scale(1.1);
+/* Form button */
+.form-btn {
+    background: #9333ea;
+    color: white;
 }
 
-/* Popup */
-.popup {
-    position: fixed;
-    bottom: 20px;
-    background: #00ff99;
-    color: black;
-    padding: 10px 20px;
-    border-radius: 10px;
-    display: none;
+/* Footer */
+.footer {
+    margin-top: 15px;
+    font-size: 12px;
+    opacity: 0.6;
 }
 
 /* Animation */
@@ -111,8 +136,8 @@ button {
     to {opacity: 1; transform: translateY(0);}
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="card">
@@ -120,43 +145,37 @@ button {
     <div class="avatar">MZ</div>
 
     <h1>Morris Zoleta</h1>
-    <p>Support my journey ❤️</p>
+    <div class="subtitle">Support my journey ❤️</div>
 
-    <h3>💸 Maya</h3>
-
-    <div class="number" id="number">
-        +63 928 965 2830
-    </div>
-
-    <button class="copy" onclick="copyNumber()">Copy Number</button>
-
-    <!-- PayPal Button -->
+    <!-- PAYPAL -->
     <a href="https://www.paypal.com/paypalme/MorrisZoleta982" target="_blank">
-        <button class="paypal">Donate via PayPal</button>
+        <button class="btn paypal">💳 Donate via PayPal</button>
     </a>
+
+    <!-- MAYA -->
+    <div class="number-box" id="number">+63 928 965 2830</div>
+    <button class="btn maya" onclick="copyNumber()">📱 Copy Maya Number</button>
 
     <!-- QR -->
     <img src="maya-qr.jpg" class="qr">
 
-</div>
+    <!-- GOOGLE FORM -->
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdosfB9Pl25dG42r7jWmKinbeEkghMzcr8GCrrqvMcddF99dg/viewform" target="_blank">
+        <button class="btn form-btn">📝 Send Message / Support</button>
+    </a>
 
-<div class="popup" id="popup">Copied!</div>
+    <div class="footer">Thank you for your support 🙏</div>
+
+</div>
 
 <script>
 function copyNumber() {
     const text = document.getElementById("number").innerText;
     navigator.clipboard.writeText(text);
-
-    const popup = document.getElementById("popup");
-    popup.style.display = "block";
-
-    setTimeout(() => {
-        popup.style.display = "none";
-    }, 2000);
+    alert("Copied: " + text);
 }
 </script>
 
 </body>
-</html> 
- 
+</html>
  
