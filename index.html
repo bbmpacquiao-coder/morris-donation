@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,35 +9,36 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #0ea5e9, #22c55e);
+    background-size: 400% 400%;
+    animation: bg 10s infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: white;
+}
+
+@keyframes bg {
+    0% {background-position:0%}
+    50% {background-position:100%}
+    100% {background-position:0%}
 }
 
 .card {
-    background: #1e293b;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.05);
     padding: 30px;
-    border-radius: 20px;
-    text-align: center;
+    border-radius: 25px;
     width: 340px;
-    box-shadow: 0 0 30px rgba(0,255,150,0.2);
-    animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1;}
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0,255,200,0.3);
 }
 
 .avatar {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
     border: 3px solid #22c55e;
 }
 
@@ -46,28 +47,20 @@ body {
     margin: 12px 0;
     padding: 14px;
     border-radius: 12px;
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-.paypal { background: #0070ba; }
-
-.copy-btn {
-    background: #22c55e;
     cursor: pointer;
 }
 
+.paypal { background: #0070ba; }
+.copy { background: #22c55e; }
+.form { background: #9333ea; }
+
 .number {
-    background: black;
+    background: rgba(0,0,0,0.5);
     padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .qr {
@@ -76,29 +69,30 @@ body {
     margin-top: 10px;
 }
 
-/* Progress bar */
 .progress {
-    background: #333;
+    background: rgba(255,255,255,0.2);
     border-radius: 10px;
     overflow: hidden;
-    margin-top: 15px;
 }
 
 .progress-bar {
-    height: 10px;
     width: 30%;
-    background: #22c55e;
+    height: 10px;
+    background: linear-gradient(90deg,#22c55e,#0ea5e9);
 }
 
-/* Popup */
-.popup {
+.popup, .donation-popup {
     position: fixed;
-    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #22c55e;
     padding: 10px 20px;
     border-radius: 10px;
     display: none;
 }
+
+.popup { bottom: 20px; }
+.donation-popup { top: 20px; background:#0ea5e9; }
 
 </style>
 </head>
@@ -107,44 +101,56 @@ body {
 
 <div class="card">
 
-    <!-- PROFILE IMAGE (replace file if you want) -->
-    <img src="profile.jpg" class="avatar" onerror="this.style.display='none'">
+<img src="profile.jpg" class="avatar" onerror="this.style.display='none'">
 
-    <h2>Morris Zoleta</h2>
-    <p>🌍 Support my journey ❤️</p>
+<h2>Morris Zoleta</h2>
+<p>🌍 Support my journey ❤️</p>
 
-    <!-- PAYPAL -->
-    <a class="btn paypal" href="https://paypal.me/MorrisZoleta982" target="_blank">
-        💸 Donate via PayPal
-    </a>
+<a class="btn paypal" href="https://paypal.me/MorrisZoleta982" target="_blank">
+💸 Donate via PayPal
+</a>
 
-    <!-- MAYA -->
-    <div class="number" id="number">+63 928 965 2830</div>
-    <div class="btn copy-btn" onclick="copyNumber()">📋 Copy Maya Number</div>
+<!-- GOOGLE FORM BUTTON -->
+<a class="btn form"  href="https://docs.google.com/forms/d/e/1FAIpQLSdosfB9Pl25dG42r7jWmKinbeEkghMzcr8GCrrqvMcddF99dg/viewform" target="_blank">
+💬 Submit Donation Info
+</a>
 
-    <img src="maya-qr.jpg" class="qr">
+<div class="number" id="number">+63 928 965 2830</div>
+<div class="btn copy" onclick="copyNum()">📋 Copy Maya Number</div>
 
-    <!-- GOAL -->
-    <p>🎯 Goal: ₱1,000</p>
-    <div class="progress">
-        <div class="progress-bar"></div>
-    </div>
+<img src="maya-qr.jpg" class="qr">
+
+<p>🎯 Goal: ₱1,000</p>
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
 
 </div>
 
-<div class="popup" id="popup">Number Copied!</div>
+<div class="popup" id="popup">Copied!</div>
+<div class="donation-popup" id="donation"></div>
 
 <script>
-function copyNumber() {
-    const text = document.getElementById('number').innerText;
+function copyNum() {
+    let text = document.getElementById('number').innerText;
     navigator.clipboard.writeText(text);
-    const popup = document.getElementById('popup');
-    popup.style.display = 'block';
-    setTimeout(() => popup.style.display = 'none', 2000);
+    let pop = document.getElementById('popup');
+    pop.style.display = 'block';
+    setTimeout(()=>pop.style.display='none',2000);
 }
+
+const names = ["John","Alex","Maria","David","Chris"];
+const amounts = ["$5","$10","$2","$20","$15"];
+
+setInterval(()=>{
+    let n = names[Math.floor(Math.random()*names.length)];
+    let a = amounts[Math.floor(Math.random()*amounts.length)];
+    let d = document.getElementById('donation');
+    d.innerText = n + " donated " + a;
+    d.style.display = "block";
+    setTimeout(()=>d.style.display="none",3000);
+},8000);
 </script>
 
 </body>
-</html> 
- 
- 
+</html>
