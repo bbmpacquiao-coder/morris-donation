@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Morris Zoleta</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.9);
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      background: linear-gradient(135deg, #22c55e, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    h1 { margin: 10px 0 5px; }
+    .subtitle { color: #94a3b8; margin-bottom: 20px; }
+
+    .section { margin-top: 20px; }
+    .section h2 { font-size: 16px; margin-bottom: 10px; }
+
+    .number {
+      background: #020617;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: block;
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: scale(1.05); }
+
+    .maya { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .paypal { background: linear-gradient(135deg, #0070ba, #003087); }
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+      border: 2px solid #334155;
+    }
+
+    .progress {
+      margin-top: 15px;
+      background: #020617;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 10px;
+      width: 30%;
+      background: linear-gradient(90deg, #22c55e, #0ea5e9);
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #22c55e;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <div class="avatar">MZ</div>
+    <h1>Morris Zoleta</h1>
+    <div class="subtitle">Support my journey ❤️</div>
+
+    <div class="section">
+      <h2>💸 Maya</h2>
+      <div class="number" id="number">+63 928 965 2830</div>
+      <button class="btn maya" onclick="copyNumber()">Copy Number</button>
+      <img src="maya-qr.jpg" alt="Maya QR">
+    </div>
+
+    <div class="section">
+      <h2>🌍 PayPal</h2>
+      <a class="btn paypal" href="https://paypal.me/MorrisZoleta982" target="_blank">Donate via PayPal</a>
+    </div>
+
+    <div class="section">
+      <h2>🎯 Goal</h2>
+      <div class="progress"><div class="progress-bar"></div></div>
+    </div>
+
+    <div class="footer">Thank you for your support 🙏</div>
+
+  </div>
+</div>
+
+<div class="popup" id="popup">Number Copied!</div>
+
+<script>
+function copyNumber() {
+  const text = document.getElementById('number').innerText;
+  navigator.clipboard.writeText(text);
+  const popup = document.getElementById('popup');
+  popup.style.display = 'block';
+  setTimeout(() => popup.style.display = 'none', 2000);
+}
+</script>
+
+</body>
+</html>
