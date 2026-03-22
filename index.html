@@ -1,181 +1,174 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Support Morris Zoleta</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
 }
 
-body {
-    background: linear-gradient(135deg, #0f172a, #020617);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.card{
+    width:380px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 40px rgba(0,0,0,0.6);
+    text-align:center;
+    animation:fadeIn 1s ease;
 }
 
-/* Glow background */
-body::before {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #22c55e55, transparent);
-    top: -100px;
-    left: -100px;
-    filter: blur(120px);
+.avatar{
+    width:90px;height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(45deg,#22c55e,#06b6d4);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:bold;font-size:26px;
 }
 
-/* Card */
-.card {
-    width: 350px;
-    padding: 25px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
-    text-align: center;
-    animation: fadeIn 1s ease;
+h1{margin-top:15px;font-size:24px;}
+.subtitle{opacity:0.85;font-size:14px;margin:10px 0 15px;line-height:1.4;}
+
+.box{
+    background:#020617;
+    padding:12px;
+    border-radius:10px;
+    margin-top:10px;
+    font-size:14px;
 }
 
-/* Avatar */
-.avatar {
-    width: 80px;
-    height: 80px;
-    margin: auto;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #22c55e, #06b6d4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 24px;
+.progress{
+    background:#020617;
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:10px;
+}
+.progress-bar{
+    height:10px;
+    width:0%;
+    background:#22c55e;
+    transition:0.5s;
 }
 
-/* Title */
-h1 {
-    margin-top: 15px;
-    font-size: 22px;
+.btn{
+    display:block;width:100%;
+    padding:13px;margin:10px 0;
+    border-radius:10px;border:none;
+    cursor:pointer;font-weight:600;
+    transition:0.3s;
+}
+.btn:hover{transform:scale(1.05);}
+.paypal{background:#0070ba;color:white;}
+.maya{background:#22c55e;color:black;}
+
+.qr{width:100%;margin-top:15px;border-radius:10px;}
+
+.copy-msg{
+    font-size:12px;
+    color:#22c55e;
+    display:none;
 }
 
-.subtitle {
-    opacity: 0.7;
-    font-size: 14px;
-    margin-bottom: 20px;
+.footer{
+    margin-top:15px;
+    font-size:12px;
+    opacity:0.7;
 }
 
-/* Buttons */
-.btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-.paypal {
-    background: #0070ba;
-    color: white;
-}
-
-.maya {
-    background: #22c55e;
-    color: black;
-}
-
-/* Number box */
-.number-box {
-    background: #020617;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-/* QR */
-.qr {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-}
-
-/* Form button */
-.form-btn {
-    background: #9333ea;
-    color: white;
-}
-
-/* Footer */
-.footer {
-    margin-top: 15px;
-    font-size: 12px;
-    opacity: 0.6;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(15px);} 
+to{opacity:1;transform:translateY(0);} }
 </style>
-
 </head>
+
 <body>
 
 <div class="card">
 
-    <div class="avatar">MZ</div>
+<div class="avatar">MZ</div>
+<h1>Morris Zoleta</h1>
 
-    <h1>Morris Zoleta</h1>
-    <div class="subtitle">Support my journey ❤️</div>
+<div class="subtitle">
+Starting from zero. Trying to rebuild my life step by step 🙏<br>
+Any support means everything ❤️
+</div>
 
-    <!-- PAYPAL -->
-    <a href="https://www.paypal.com/paypalme/MorrisZoleta982" target="_blank">
-        <button class="btn paypal">💳 Donate via PayPal</button>
-    </a>
+<!-- PROGRESS -->
+<div class="box">
+🎯 Goal: ₱10,000 <br>
+💰 Total Support: ₱<span id="amount">0</span><br>
+📅 Last Update: Day 1
+</div>
 
-    <!-- MAYA -->
-    <div class="number-box" id="number">+63 928 965 2830</div>
-    <button class="btn maya" onclick="copyNumber()">📱 Copy Maya Number</button>
+<div class="progress">
+<div class="progress-bar" id="bar"></div>
+</div>
 
-    <!-- QR -->
-    <img src="maya-qr.jpg" class="qr">
+<!-- UPDATE -->
+<div class="box">
+📌 Latest Update:<br>
+Day 1 – Starting from zero. Lalaban kahit mahirap 🙏
+</div>
 
-    <!-- GOOGLE FORM -->
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdosfB9Pl25dG42r7jWmKinbeEkghMzcr8GCrrqvMcddF99dg/viewform" target="_blank">
-        <button class="btn form-btn">📝 Send Message / Support</button>
-    </a>
+<!-- PAYPAL -->
+<a href="https://www.paypal.com/paypalme/MorrisZoleta982" target="_blank">
+<button class="btn paypal">💳 Support via PayPal</button>
+</a>
 
-    <div class="footer">Thank you for your support 🙏</div>
+<!-- MAYA -->
+<div class="box" id="number">+63 928 965 2830</div>
+<button class="btn maya" onclick="copyNumber()">📱 Support via Maya</button>
+<div class="copy-msg" id="copied">Copied!</div>
+
+<!-- QR -->
+<img src="maya-qr.jpg" class="qr">
+
+<!-- MESSAGE -->
+<div class="box">
+💬 Message:<br>
+Hindi ako humihingi lang—ginagawa ko to para magbago buhay ko.<br>
+Salamat sa kahit anong support ❤️
+</div>
+
+<div class="footer">Every share and support helps 🙏</div>
 
 </div>
 
 <script>
-function copyNumber() {
-    const text = document.getElementById("number").innerText;
-    navigator.clipboard.writeText(text);
-    alert("Copied: " + text);
+let amount = 0;
+function updateBar(){
+    let percent = (amount/10000)*100;
+    document.getElementById("bar").style.width = percent+"%";
 }
+
+function copyNumber(){
+    let text = document.getElementById("number").innerText;
+    navigator.clipboard.writeText(text);
+    document.getElementById("copied").style.display="block";
+    setTimeout(()=>{
+        document.getElementById("copied").style.display="none";
+    },2000);
+}
+
+// OPTIONAL: MANUAL UPDATE
+// Change amount here manually when you receive donations
+amount = 0;
+document.getElementById("amount").innerText = amount;
+updateBar();
 </script>
 
 </body>
-</html>
+</html> 
  
+  
