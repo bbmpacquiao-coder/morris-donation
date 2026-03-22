@@ -30,7 +30,7 @@ body {
     background: rgba(255,255,255,0.05);
     padding: 30px;
     border-radius: 25px;
-    width: 340px;
+    width: 350px;
     text-align: center;
     box-shadow: 0 0 40px rgba(0,255,200,0.3);
 }
@@ -54,8 +54,8 @@ body {
 }
 
 .paypal { background: #0070ba; }
-.copy { background: #22c55e; }
 .form { background: #9333ea; }
+.copy { background: #22c55e; }
 
 .number {
     background: rgba(0,0,0,0.5);
@@ -85,15 +85,20 @@ body {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    background: #22c55e;
     padding: 10px 20px;
     border-radius: 10px;
     display: none;
 }
 
-.popup { bottom: 20px; }
-.donation-popup { top: 20px; background:#0ea5e9; }
+.popup {
+    bottom: 20px;
+    background: #22c55e;
+}
 
+.donation-popup {
+    top: 20px;
+    background:#0ea5e9;
+}
 </style>
 </head>
 
@@ -106,20 +111,23 @@ body {
 <h2>Morris Zoleta</h2>
 <p>🌍 Support my journey ❤️</p>
 
+<!-- 💸 PAYPAL -->
 <a class="btn paypal" href="https://paypal.me/MorrisZoleta982" target="_blank">
 💸 Donate via PayPal
 </a>
 
-<!-- GOOGLE FORM BUTTON -->
-<a class="btn form"  href="https://docs.google.com/forms/d/e/1FAIpQLSdosfB9Pl25dG42r7jWmKinbeEkghMzcr8GCrrqvMcddF99dg/viewform" target="_blank">
+<!-- 💬 GOOGLE FORM -->
+<a class="btn form" href="https://docs.google.com/forms/d/e/1FAIpQLSdosfB9Pl25dG42r7jWmKinbeEkghMzcr8GCrrqvMcddF99dg/viewform" target="_blank">
 💬 Submit Donation Info
 </a>
 
+<!-- 📱 MAYA -->
 <div class="number" id="number">+63 928 965 2830</div>
 <div class="btn copy" onclick="copyNum()">📋 Copy Maya Number</div>
 
 <img src="maya-qr.jpg" class="qr">
 
+<!-- 🎯 GOAL -->
 <p>🎯 Goal: ₱1,000</p>
 <div class="progress">
 <div class="progress-bar"></div>
@@ -127,6 +135,7 @@ body {
 
 </div>
 
+<!-- POPUPS -->
 <div class="popup" id="popup">Copied!</div>
 <div class="donation-popup" id="donation"></div>
 
@@ -139,6 +148,7 @@ function copyNum() {
     setTimeout(()=>pop.style.display='none',2000);
 }
 
+// FAKE LIVE DONATIONS (for now)
 const names = ["John","Alex","Maria","David","Chris"];
 const amounts = ["$5","$10","$2","$20","$15"];
 
