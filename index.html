@@ -14,70 +14,137 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
+
 .card {
     background: #1e293b;
     padding: 30px;
     border-radius: 20px;
     text-align: center;
-    width: 320px;
+    width: 340px;
     box-shadow: 0 0 30px rgba(0,255,150,0.2);
+    animation: fadeIn 1s ease;
 }
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1;}
+}
+
 .avatar {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(45deg,#22c55e,#06b6d4);
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    margin: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #22c55e;
 }
+
 .btn {
     display: block;
-    margin: 10px 0;
-    padding: 12px;
-    border-radius: 10px;
+    margin: 12px 0;
+    padding: 14px;
+    border-radius: 12px;
     text-decoration: none;
     color: white;
     font-weight: bold;
+    transition: 0.3s;
 }
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
 .paypal { background: #0070ba; }
+
+.copy-btn {
+    background: #22c55e;
+    cursor: pointer;
+}
+
+.number {
+    background: black;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
 .qr {
     width: 100%;
     border-radius: 10px;
     margin-top: 10px;
 }
-</style>
 
+/* Progress bar */
+.progress {
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    height: 10px;
+    width: 30%;
+    background: #22c55e;
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    bottom: 20px;
+    background: #22c55e;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: none;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="card">
-    <div class="avatar">MZ</div>
+
+    <!-- PROFILE IMAGE (replace file if you want) -->
+    <img src="profile.jpg" class="avatar" onerror="this.style.display='none'">
 
     <h2>Morris Zoleta</h2>
-    <p>🌍 Support me worldwide ❤️</p>
+    <p>🌍 Support my journey ❤️</p>
 
     <!-- PAYPAL -->
     <a class="btn paypal" href="https://paypal.me/MorrisZoleta982" target="_blank">
-        💸 Donate via PayPal (Global)
+        💸 Donate via PayPal
     </a>
 
     <!-- MAYA -->
-    <p>📱 Maya (Philippines)</p>
+    <div class="number" id="number">+63 928 965 2830</div>
+    <div class="btn copy-btn" onclick="copyNumber()">📋 Copy Maya Number</div>
+
     <img src="maya-qr.jpg" class="qr">
 
-    <p style="font-size:12px;opacity:0.7;">
-        Accepting donations worldwide 🌍
-    </p>
+    <!-- GOAL -->
+    <p>🎯 Goal: ₱1,000</p>
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+
 </div>
+
+<div class="popup" id="popup">Number Copied!</div>
+
+<script>
+function copyNumber() {
+    const text = document.getElementById('number').innerText;
+    navigator.clipboard.writeText(text);
+    const popup = document.getElementById('popup');
+    popup.style.display = 'block';
+    setTimeout(() => popup.style.display = 'none', 2000);
+}
+</script>
 
 </body>
 </html> 
-   
  
  
